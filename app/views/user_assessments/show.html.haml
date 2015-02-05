@@ -19,7 +19,7 @@
         %h4
           Mental
           %span.label.label-default
-            = @user_assessment
+            = @user_assessment.mental_score
         %ul.list-group
           - @user_assessment.user_assessment_questions.mental.each do |assessment_question|
             %li.list-group-item
@@ -32,7 +32,10 @@
                   You Answered:
                   = assessment_question.value
       .col-md-4
-        %h4 Technique
+        %h4
+          Technique
+          %span.label.label-default
+            = @user_assessment.technique_score
         %ul.list-group
           - @user_assessment.user_assessment_questions.technique.each do |assessment_question|
             %li.list-group-item
@@ -45,7 +48,10 @@
                   You Answered:
                   = assessment_question.value
       .col-md-4
-        %h4 Physical
+        %h4
+          Physical
+          %span.label.label-default
+            = @user_assessment.physical_score
         %ul.list-group
           - @user_assessment.user_assessment_questions.physical.each do |assessment_question|
             %li.list-group-item
