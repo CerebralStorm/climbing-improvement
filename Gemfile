@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'haml'
+gem 'rails_admin'
 
 group :doc do
   gem 'sdoc', require: false

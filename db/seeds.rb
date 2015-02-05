@@ -1,7 +1,33 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+[
+  {description: "My footwork (use of feet) deteriorates during the hardest part of the climb.", category: "mental"},
+  {description: "My forearms balloon and my grip begins to fail even on routes that are easy for me.", category: "technique"},
+  {description: "On hard sequences, I have diffculty stepping onto critical footholds. ", category: "physical"},
+  {description: "I get anxious and tight as I head into crux sequences", category: "mental"},
+  {description: "My biceps (upper arms) pump out before my forearms", category: "technique"},
+  {description: "I have difficulty hanging on small, necessary-to-use holds.", category: "physical"},
+  {description: "I blow sequences I have wired and know by heart", category: "mental"},
+  {description: "I stall at the start of crux sequences. I end up having to hang on the rope and rest before I can give it a good, solid try", category: "technique"},
+  {description: "I climb 3 or 4 days in a row", category: "physical"},
+  {description: "I get sewing machine leg ('Elvis leg')", category: "mental"},
+  {description: "I pump out on overhanging climbs no matter how big the holds", category: "technique"},
+  {description: "I get out of breath when I climb", category: "physical"},
+  {description: "I make excuses for why I might fall on a route before I even begin to climb.", category: "mental"},
+  {description: "I miss hidden holds on routes", category: "technique"},
+  {description: "I have difficulty hanging on to small sloping holds or pockets", category: "physical"},
+  {description: "I grab quick draws, the rope, or other gear instead of risking a fall trying a hard move of which I am unsure.", category: "mental"},
+  {description: "On a typical climb, I feel like much of my body weight is hanging on my arms", category: "technique"},
+  {description: "I get very sore the day after climbing at the crags", category: "physical"},
+  {description: "I have difficulty visualizing myself successfully climbing the route before I leave the ground.", category: "mental"},
+  {description: "I cannot reach key holds on difficult routes.", category: "technique"},
+  {description: "On overhanging routes and roofs, I have difficulty keeping my feet from cutting loose and swinging out.", category: "physical"},
+  {description: "While climbing, I get distracted by activity on the ground and/or I think about whether the belayer is paying attention.", category: "mental"},
+  {description: "I have difficulty reading sequences.", category: "technique"},
+  {description: "I get a flash pump on the first climb of the day.", category: "physical"},
+  {description: "I have more difficulty climbing when people are watching.", category: "mental"},
+  {description: "My feet unexpectedly pop off footholds.", category: "technique"},
+  {description: "When lead climbing a safe route, I have difficulty purshing myself to the complete limit.", category: "mental"},
+  {description: "I have difficulty finding midroute rest positions and shakeouts.", category: "technique"},
+  {description: "My first attempt on a hard route is usually better than my second or third attempts of the day.", category: "physical"},
+].each do |question|
+  Question.where(question).first_or_create
+end

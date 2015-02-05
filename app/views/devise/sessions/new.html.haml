@@ -1,0 +1,27 @@
+.row
+  .col-md-3
+  .col-md-6
+    .well
+      %h2 Sign in
+      %hr/
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+        .form-group
+          = f.label :email, class: "control-label sr-only"
+          = f.email_field :email, :autofocus => true, placeholder: "Please enter your email", class: "form-control input-lg"
+
+        .form-group
+          = f.label :password, class: "control-label sr-only"
+          = f.password_field :password, placeholder: "Please enter your password", class: "form-control input-lg"
+
+        - if devise_mapping.rememberable?
+          .form-group
+            .checkbox
+              %label
+                = f.check_box :remember_me
+                Remember me
+
+        .form-group
+          = f.submit "Sign in", class: "btn btn-success btn-block btn-default"
+      .form-group
+        = render "devise/shared/links"
+  .col-md-3
