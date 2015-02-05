@@ -1,0 +1,45 @@
+.panel.panel-default
+  .panel-heading New Assessment
+  .panel-body
+    %p
+      Answer each question by choosing the number that best characterizes your performance.
+      To obtain the most accurate results, it's essential that you score each question according
+      to your most recent experiences on the rock. Pause for a moment and review recent climbs
+      to determin the correct answer for each question. Do not overanaylize the questions however,
+      or try to read between the lines--you will have a chance to ponder the meaning of your answers
+      when final counts are tallied for you.
+
+    .well
+      %ul
+        %li 0 = almost always
+        %li 1 = often
+        %li 2 = about half the time
+        %li 3 = occasionally
+        %li 4 = seldom
+        %li 5 = never
+
+    #question_container.well
+      %h4.text-center
+        Question
+        = @user_assessment_question.question_order
+      %hr
+      .btn-toolbar
+        .btn-group.btn-group-xs
+          - @user_assessment.user_assessment_questions.each do |assessment_question|
+            - btn_class = (@user_assessment_question == assessment_question) ? "btn-primary" : "btn-default"
+            = link_to assessment_question.question_order, edit_user_assessment_path(@user_assessment, user_assessment_question_id: assessment_question.id), class: "btn #{btn_class}"
+      %hr
+      %p
+        = @user_assessment_question.question.description
+      = form_for @user_assessment_question do |f|
+        .form-group
+          - (0..5).each do |number|
+            %label.radio-inline
+              = f.radio_button  :value, number, checked: (number == @user_assessment_question.value)
+              = number
+        -if @user_assessment_question.question_order == Question.count
+          = f.submit "Finish", class: "btn btn-success"
+        -else
+          -if previous_user_assessment_question = @user_assessment.previous_question(@user_assessment_question)
+            = link_to "Previous", edit_user_assessment_path(@user_assessment, user_assessment_question_id: previous_user_assessment_question.id), class: "btn btn-primary"
+          = f.submit "Next", class: "btn btn-primary"

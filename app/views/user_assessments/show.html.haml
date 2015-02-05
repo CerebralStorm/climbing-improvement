@@ -2,14 +2,10 @@
   .panel-heading New Assessment
   .panel-body
     %p
-      Answer each question by choosing the number that best characterizes your performance.
-      To obtain the most accurate results, it's essential that you score each question according
-      to your most recent experiences on the rock. Pause for a moment and review recent climbs
-      to determin the correct answer for each question. Do not overanaylize the questions however,
-      or try to read between the lines--you will have a chance to ponder the meaning of your answers
-      when final counts are tallied for you.
+      Here is how you answered
 
     .well
+      KEY
       %ul
         %li 0 = almost always
         %li 1 = often
@@ -18,7 +14,46 @@
         %li 4 = seldom
         %li 5 = never
 
-  %ul.list-group
-    - @user_assessment.user_assessment_questions.order(:question_order).each do |assessment_question|
-      %li.list-group-item
-        = assessment_question.question.description
+    .row
+      .col-md-4
+        %h4
+          Mental
+          %span.label.label-default
+            = @user_assessment
+        %ul.list-group
+          - @user_assessment.user_assessment_questions.mental.each do |assessment_question|
+            %li.list-group-item
+              %dl
+                %dt
+                  = "Question #{assessment_question.question_order}"
+                %dd
+                  = assessment_question.question.description
+                %dt
+                  You Answered:
+                  = assessment_question.value
+      .col-md-4
+        %h4 Technique
+        %ul.list-group
+          - @user_assessment.user_assessment_questions.technique.each do |assessment_question|
+            %li.list-group-item
+              %dl
+                %dt
+                  = "Question #{assessment_question.question_order}"
+                %dd
+                  = assessment_question.question.description
+                %dt
+                  You Answered:
+                  = assessment_question.value
+      .col-md-4
+        %h4 Physical
+        %ul.list-group
+          - @user_assessment.user_assessment_questions.physical.each do |assessment_question|
+            %li.list-group-item
+              %dl
+                %dt
+                  = "Question #{assessment_question.question_order}"
+                %dd
+                  = assessment_question.question.description
+                %dt
+                  You Answered:
+                  = assessment_question.value

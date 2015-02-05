@@ -5,4 +5,12 @@
   %ul.list-group
     - @user_assessments.each do |user_assessment|
       %li.list-group-item
-        = user_assessment.created_at
+        - if user_assessment.completed?
+          %p
+            = user_assessment.created_at
+          .btn-group
+            = link_to "View Results", user_assessment_path(user_assessment), class: "btn btn-success"
+            = link_to "Change scores", edit_user_assessment_path(user_assessment), class: "btn btn-warning"
+        - else
+          = link_to "Continue #{user_assessment.created_at}", edit_user_assessment_path(user_assessment, continue: true)
+

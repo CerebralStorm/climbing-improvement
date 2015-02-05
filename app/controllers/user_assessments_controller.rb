@@ -12,23 +12,17 @@ class UserAssessmentsController < ApplicationController
     respond_with(@user_assessment)
   end
 
-  def new
-    @user_assessment = current_user.user_assessments.create!
-    redirect_to user_assessment_path(@user_assessment)
+  def edit
+    @user_assessment_question = @user_assessment.first_unanswered_question if params[:continue].present?
   end
 
-  def edit
+  def new
+    create
   end
 
   def create
-    @user_assessment = UserAssessment.new(user_assessment_params)
-    @user_assessment.save
-    respond_with(@user_assessment)
-  end
-
-  def update
-    @user_assessment.update(user_assessment_params)
-    respond_with(@user_assessment)
+    @user_assessment = current_user.user_assessments.create!
+    redirect_to edit_user_assessment_path(@user_assessment)
   end
 
   def destroy
@@ -39,9 +33,10 @@ class UserAssessmentsController < ApplicationController
   private
     def set_user_assessment
       @user_assessment = UserAssessment.find(params[:id])
-    end
-
-    def user_assessment_params
-      params.require(:user_assessment).permit(:user_id)
+      if params[:user_assessment_question_id].present?
+        @user_assessment_question = UserAssessmentQuestion.find(params[:user_assessment_question_id])
+      else
+        @user_assessment_question = @user_assessment.user_assessment_questions.first
+      end
     end
 end

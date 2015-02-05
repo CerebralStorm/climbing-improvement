@@ -3,5 +3,6 @@ ClimbingImprovement::Application.routes.draw do
   root 'user_assessments#index'
   resources :questions
   resources :user_assessments
+  resources :user_assessment_questions
   devise_for :users
 end
