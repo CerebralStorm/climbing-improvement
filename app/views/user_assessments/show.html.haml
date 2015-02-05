@@ -19,6 +19,6 @@
         %li 5 = never
 
   %ul.list-group
-    - @user_assessment.questions.each do |question|
+    - @user_assessment.user_assessment_questions.order(:question_order).each do |assessment_question|
       %li.list-group-item
-        = question.description
+        = assessment_question.question.description

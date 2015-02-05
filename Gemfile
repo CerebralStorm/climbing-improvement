@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'haml'
 gem 'rails_admin'
+gem 'pry'
 
 group :doc do
   gem 'sdoc', require: false

@@ -4,6 +4,7 @@ class CreateUserAssessmentQuestions < ActiveRecord::Migration
       t.integer :question_id
       t.integer :user_assessment_id
       t.integer :value
+      t.integer :question_order
 
       t.timestamps
     end

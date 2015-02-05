@@ -27,12 +27,16 @@ ActiveRecord::Schema.define(version: 20150205042045) do
     t.integer  "question_id"
     t.integer  "user_assessment_id"
     t.integer  "value"
+    t.integer  "question_order"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "user_assessments", force: true do |t|
     t.integer  "user_id"
+    t.integer  "mental_score"
+    t.integer  "technique_score"
+    t.integer  "physical_score"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
