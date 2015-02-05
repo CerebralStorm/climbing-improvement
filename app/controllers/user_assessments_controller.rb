@@ -4,7 +4,7 @@ class UserAssessmentsController < ApplicationController
   respond_to :html
 
   def index
-    @user_assessments = UserAssessment.all
+    @user_assessments = current_user.user_assessments.order('created_at')
     respond_with(@user_assessments)
   end
 
@@ -13,8 +13,8 @@ class UserAssessmentsController < ApplicationController
   end
 
   def new
-    @user_assessment = UserAssessment.new
-    respond_with(@user_assessment)
+    @user_assessment = current_user.user_assessments.create!
+    redirect_to user_assessment_path(@user_assessment)
   end
 
   def edit

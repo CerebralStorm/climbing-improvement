@@ -1,0 +1,24 @@
+.panel.panel-default
+  .panel-heading New Assessment
+  .panel-body
+    %p
+      Answer each question by choosing the number that best characterizes your performance.
+      To obtain the most accurate results, it's essential that you score each question according
+      to your most recent experiences on the rock. Pause for a moment and review recent climbs
+      to determin the correct answer for each question. Do not overanaylize the questions however,
+      or try to read between the lines--you will have a chance to ponder the meaning of your answers
+      when final counts are tallied for you.
+
+    .well
+      %ul
+        %li 0 = almost always
+        %li 1 = often
+        %li 2 = about half the time
+        %li 3 = occasionally
+        %li 4 = seldom
+        %li 5 = never
+
+  %ul.list-group
+    - @user_assessment.questions.each do |question|
+      %li.list-group-item
+        = question.description

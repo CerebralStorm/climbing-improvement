@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-heading My Assessments
+  .panel-body
+    = link_to 'New User assessment', new_user_assessment_path, class: "btn btn-success"
+  %ul.list-group
+    - @user_assessments.each do |user_assessment|
+      %li.list-group-item
+        = user_assessment.created_at
