@@ -37,9 +37,10 @@
             %label.radio-inline
               = f.radio_button  :value, number, checked: (number == @user_assessment_question.value)
               = number
-        -if @user_assessment_question.question_order == Question.count
-          = f.submit "Finish", class: "btn btn-success"
-        -else
-          -if previous_user_assessment_question = @user_assessment.previous_question(@user_assessment_question)
-            = link_to "Previous", edit_user_assessment_path(@user_assessment, user_assessment_question_id: previous_user_assessment_question.id), class: "btn btn-primary"
+        -if previous_user_assessment_question = @user_assessment.previous_question(@user_assessment_question)
+          = link_to "Previous", edit_user_assessment_path(@user_assessment, user_assessment_question_id: previous_user_assessment_question.id), class: "btn btn-primary"
+        - if @user_assessment.next_question(@user_assessment_question)
           = f.submit "Next", class: "btn btn-primary"
+        -else
+          = hidden_field_tag :finish, true
+          = f.submit "Finish", class: "btn btn-success"

@@ -25,7 +25,8 @@
   {description: "I get a flash pump on the first climb of the day.", category: "physical"},
   {description: "I have more difficulty climbing when people are watching.", category: "mental"},
   {description: "My feet unexpectedly pop off footholds.", category: "technique"},
-  {description: "When lead climbing a safe route, I have difficulty purshing myself to the complete limit.", category: "mental"},
+  {description: "I experience elbow pain on a regular basis.", category: "physical"},
+  {description: "When lead climbing a safe route, I have difficulty pushing myself to the complete limit.", category: "mental"},
   {description: "I have difficulty finding midroute rest positions and shakeouts.", category: "technique"},
   {description: "My first attempt on a hard route is usually better than my second or third attempts of the day.", category: "physical"},
 ].each do |question|
