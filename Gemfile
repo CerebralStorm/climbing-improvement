@@ -13,6 +13,7 @@ gem 'devise'
 gem 'haml'
 gem 'rails_admin'
 gem 'pry'
+gem 'rails_12factor', group: :production
 
 group :doc do
   gem 'sdoc', require: false
